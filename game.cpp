@@ -2,6 +2,8 @@
 
 void game::init() {
 	glClearColor(0, 0, 0, 1);
+
+	p1 = new Pillar(400, 250, 30, -400);
 }
 
 void game::reshape(int w, int h) {
@@ -10,17 +12,26 @@ void game::reshape(int w, int h) {
 	glMatrixMode(GL_PROJECTION);//ma tran he toa do
 	glLoadIdentity();
 
-	glOrtho(-300, 300, -300, 300, 0, 10);//phep chieu truc giao
+	glOrtho(0, 600, 0, 600, 0, 10);//phep chieu truc giao
 }
 
 void game::display() {
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	//character here
 
+	p1->update();
+	p1->render();
+
+
 	glutSwapBuffers();
+	glFlush();
 }
 
-void game::input(){}
+void game::timer(int) {
+	glutPostRedisplay();
+	glutTimerFunc(1000 / FPS, timer, 0);
+}
 
-void game::drawText(){}
+void game::input() {}
+
+void game::drawText() {}

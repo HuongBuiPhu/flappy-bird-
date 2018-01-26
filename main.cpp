@@ -13,6 +13,7 @@ int main() {
 
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);
+	glutTimerFunc(1000 / FPS, timer, 0);
 
 	glutMainLoop();
 }
