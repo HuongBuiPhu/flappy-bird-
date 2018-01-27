@@ -1,5 +1,8 @@
 #include"Pillar.h"
 
+
+Pillar::Pillar() {}
+
 Pillar::Pillar(int x, int y, int w, int h) {
 	this->posX = x;
 	this->posY = y;
@@ -30,20 +33,19 @@ void Pillar::setPosX(int x) {
 	this->posX = x;
 }
 
-void Pillar::setPosY(int min, int max) {
-	srand(time(NULL));
-	this->posY = rand() % max + min;
+void Pillar::setPosY(int y) {
+	this->posY = y;
 }
 
-void Pillar::update() {
-	this->posX -= 5;
-	if (posX < -70) {
-		posX = 650;
-		setPosY(100, 280);
-	}
+void Pillar::setWidth(int w) {
+	this->width = w;
+}
+
+void Pillar::setHeight(int h) {
+	this->heigh = h;
 }
 
 void Pillar::render() {
-	glColor3f(1, 0, 0);
+	glColor3f(0, 1, 0);
 	glRectf(posX, posY, posX + width, posY + heigh);
 }
