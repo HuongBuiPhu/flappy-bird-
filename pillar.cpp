@@ -46,6 +46,6 @@ void Pillar::setHeight(int h) {
 }
 
 void Pillar::render() {
-	glColor3f(0, 1, 0);
+	glColor3f(0, 0.9, 0);
 	glRectf(posX, posY, posX + width, posY + heigh);
 }

@@ -10,7 +10,8 @@ using namespace std;
 
 namespace game {
 
-	static int fps = 18;
+	static bool isFirstStart = true;
+	static int fps = 17;
 	static Obstacle *ob[4];
 	static Bird *b;
 	static int point;
@@ -18,9 +19,11 @@ namespace game {
 	void init();//khoi tao
 	void display();//man hinh
 	void reshape(int w, int h);//he toa do va phep chieu
-	void input(int key, int, int);//ban phim
-	void drawText();//hien thi diem
-	void timer(int);
+	void keyInput(unsigned char key, int, int);//phim di chuyen
+	void drawPoint();//hien thi diem
+	void gameOver();//ket thuc game
+	void startGame();//bat dau game
+	void timer(int);//vong lap thoi gian
 	bool collisionWithTop(Pillar *p, Bird *b);
 	bool collisionWithBottom(Pillar *p, Bird *b);
 

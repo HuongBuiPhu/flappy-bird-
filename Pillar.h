@@ -4,6 +4,7 @@
 #include<gl/GLU.h>
 #include<gl/GL.h>
 
+//ong nuoc
 class Pillar {
 private:
 	int posX, posY, width, heigh;

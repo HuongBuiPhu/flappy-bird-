@@ -16,8 +16,7 @@ int main() {
 		if (fps > 0) {
 			glutTimerFunc(500 / fps, timer, 0);
 		}
-
-		glutSpecialFunc(input);
+		glutKeyboardFunc(keyInput);
 		glutMainLoop();
 	}
 	

@@ -7,6 +7,7 @@ Bird::Bird(int x, float y, int w, int h) {
 	this->width = w;
 	this->height = h;
 	this->velocity = 0;
+	this->speed = 0;
 	this->isDead = false;
 }
 
@@ -26,6 +27,10 @@ void Bird::setVelocity(float v) {
 
 void Bird::setDead(bool d) {
 	this->isDead = d;
+}
+
+void Bird::setSpeed(float s) {
+	this->speed = s;
 }
 
 int Bird::getPosX() {
@@ -53,9 +58,9 @@ bool Bird::getDead() {
 }
 
 void Bird::update() {
-	velocity += 1.5f;
+	velocity += speed;
 	posY -= velocity;
-	if (this->posY < 50 || this->posY > 600) isDead = true;
+	if (this->posY < 10 || this->posY > 600) isDead = true;
 }
 
 void Bird::render() {
