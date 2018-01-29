@@ -44,28 +44,25 @@ void game::display() {
 				if (b->getDead() == false) point++;
 			}
 		}
+		if (b->getDead()) {
+			ob[i]->setSpeed(0);
+		}
 	}
 
 	drawPoint();
-
-	if (b->getDead() == true) {
-		fps = 0;
-		gameOver();
-	}
+	gameOver();
 
 	glutSwapBuffers();
 	glFlush();
 }
 
 void game::timer(int) {
-	if (fps > 0) {
-		glutPostRedisplay();
-		glutTimerFunc(500 / fps, timer, 0);
-	}
+	glutPostRedisplay();
+	glutTimerFunc(500 / fps, timer, 0);
 }
 
 void game::keyInput(unsigned char key, int, int) {
-	if (key == 32) {
+	if (!b->getDead() && key == 32) {
 		if (isFirstStart) {
 			isFirstStart = false;
 			b->setSpeed(1.5f);
@@ -98,11 +95,13 @@ void game::startGame() {
 }
 
 void game::gameOver() {
-	glColor3f(0.796875, 0.796875, 0.796875);
-	string g = "YOU LOSE";
-	glRasterPos2i(250, 290);
-	for (size_t i = 0; i < g.size(); i++) {
-		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, g[i]);
+	if (b->getDead()) {
+		glColor3f(0.796875, 0.796875, 0.796875);
+		string g = "YOU LOSE";
+		glRasterPos2i(250, 290);
+		for (size_t i = 0; i < g.size(); i++) {
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, g[i]);
+		}
 	}
 }
 
@@ -116,6 +115,6 @@ bool game::collisionWithTop(Pillar *p, Bird *b) {
 bool game::collisionWithBottom(Pillar *p, Bird *b) {
 	if (b->getPosX() + b->getWidth() < p->getPosX()) return false;
 	if (b->getPosX() > p->getPosX() + p->getWidth()) return false;
-	if (b->getPosY() - 3 > p->getPosY()) return false;
+	if (b->getPosY() > p->getPosY()) return false;
 	return true;
 }

@@ -10,14 +10,10 @@ int main() {
 	glutCreateWindow("Flappy Bird");
 
 	init();
-	while (1) {
-		glutReshapeFunc(reshape);
-		glutDisplayFunc(display);
-		if (fps > 0) {
-			glutTimerFunc(500 / fps, timer, 0);
-		}
-		glutKeyboardFunc(keyInput);
-		glutMainLoop();
-	}
-	
+	glutReshapeFunc(reshape);
+	glutDisplayFunc(display);
+	glutTimerFunc(500 / fps, timer, 0);
+	glutKeyboardFunc(keyInput);
+	glutMainLoop();
+
 }

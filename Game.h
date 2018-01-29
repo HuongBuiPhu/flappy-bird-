@@ -11,7 +11,7 @@ using namespace std;
 namespace game {
 
 	static bool isFirstStart = true;
-	static int fps = 17;
+	static int fps = 16;
 	static Obstacle *ob[4];
 	static Bird *b;
 	static int point;

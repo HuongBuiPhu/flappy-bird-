@@ -61,6 +61,7 @@ void Bird::update() {
 	velocity += speed;
 	posY -= velocity;
 	if (this->posY < 10 || this->posY > 600) isDead = true;
+	if (this->posY < 10) this->posY = 10;
 }
 
 void Bird::render() {
